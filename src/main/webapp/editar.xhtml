@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Editar Clientes</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<div class="card">
+    		<h2 style="margin-top:0">Modificar Cliente</h2>
+    		<p:commandButton action="index" ajax="false" value="Regresar"></p:commandButton>
+			<br/><br/>
+			<p:messages id="messages" showDetail="true" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+    		<p:panelGrid columns="4">	
+				<f:facet name="header">
+		            <p:outputLabel value="Datos del cliente"></p:outputLabel>
+		        </f:facet>
+				<p:outputLabel for="@next" value="Tipo Identificación"></p:outputLabel>
+				<p:selectOneMenu id="cod_tipo_identi" value="#{cliente.cod_tipo_identi}">
+                    <f:selectItem itemLabel="CEDULA" itemValue="1"/>
+                    <f:selectItem itemLabel="TARJETA DE IDENTIDAD" itemValue="2"/>
+                    <f:selectItem itemLabel="REGISTRO CIVIL" itemValue="3"/>
+                    <f:selectItem itemLabel="PASAPORTE" itemValue="4"/>
+                </p:selectOneMenu>
+	
+				<p:outputLabel value="Numero Identificación"></p:outputLabel>
+				<p:inputText value="#{cliente.numero_identificacion}" type="number"></p:inputText>
+	
+				<p:outputLabel value="Primer Nombre"></p:outputLabel>
+				<p:inputText id = "primer_nombre" value="#{cliente.primer_nombre}" maxlength="50"></p:inputText>
+				
+				<p:outputLabel value="Segundo Nombre"></p:outputLabel>
+				<p:inputText value="#{cliente.segundo_nombre}"  maxlength="50"></p:inputText>
+	
+				<p:outputLabel value="Primer Apellido"></p:outputLabel>
+				<p:inputText value="#{cliente.primer_apellido}"  maxlength="50"></p:inputText>
+				
+				<p:outputLabel value="Segundo Apellido"></p:outputLabel>
+				<p:inputText value="#{cliente.segundo_apellido}"  maxlength="50"></p:inputText>
+	
+				<p:outputLabel value="Celular"></p:outputLabel>
+				<p:inputText value="#{cliente.celular}"  type="number"></p:inputText>
+	
+				<p:outputLabel value="Correo"></p:outputLabel>
+				<p:inputText value="#{cliente.correo}"  type="email" maxlength="50"></p:inputText>
+				
+				<p:outputLabel value="Direccion"></p:outputLabel>
+				<p:inputText value="#{cliente.direccion}"  maxlength="50"></p:inputText>
+				
+				<p:outputLabel for="@next" value="Autoriza Tratamiento"></p:outputLabel>
+				<p:selectOneMenu id="autoriza_tratamiento" value="#{cliente.autoriza_tratamiento}">
+                    <f:selectItem itemLabel="SI" itemValue="S"/>
+                    <f:selectItem itemLabel="NO" itemValue="N"/>
+                </p:selectOneMenu>
+				
+				<p:outputLabel for="@next" value="Estado Cliente"></p:outputLabel>
+				<p:selectOneMenu id="estado_cliente" value="#{cliente.estado_cliente}">
+                    <f:selectItem itemLabel="ACTIVO" itemValue="A"/>
+                    <f:selectItem itemLabel="INACTIVO" itemValue="I"/>
+                </p:selectOneMenu>
+			
+				<f:facet name="footer">
+					<p:commandButton action="#{clienteBean.actualizarCliente(cliente)}" ajax="false" value="Actualizar"></p:commandButton>
+				</f:facet>			
+			</p:panelGrid>		
+		</div>	
+	</h:form>
+</h:body>
+</html>

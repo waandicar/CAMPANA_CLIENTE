@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Lista de Clientes</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h2 style="margin-top:0">Lista de clientes</h2>
+	<p:commandButton action="#{clienteBean.nuevoCliente()}" ajax="false" value="Nuevo Cliente"></p:commandButton>
+	<br/><br/>
+		<p:dataTable value="#{clienteBean.listarClientes()}" var="cliente"
+			border="1">			
+			<p:column headerText="Numero de Identificación">
+				<h:outputText value="#{cliente.numero_identificacion}"></h:outputText>
+			</p:column>
+			<p:column headerText="Nombres">				
+				<h:outputText value="#{cliente.primer_nombre} #{cliente.segundo_nombre}"></h:outputText>
+			</p:column>
+			<p:column headerText="Apellidos">
+				<h:outputText value="#{cliente.primer_apellido} #{cliente.segundo_apellido}"></h:outputText>
+			</p:column>
+			<p:column headerText="Fecha Actualización">
+				<h:outputText value="#{cliente.fecha_actualizacion}"></h:outputText>
+			</p:column>
+			<p:column>
+				<p:commandButton action="#{clienteBean.modificarCliente(cliente.cod_cliente)}" ajax="false" value="Modificar"></p:commandButton>
+			</p:column>
+			<p:column>
+				<p:commandButton action="#{clienteBean.eliminarCliente(cliente.cod_cliente)}" ajax="false" value="Eliminar"></p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
